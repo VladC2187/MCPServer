@@ -1,7 +1,3 @@
-"""MCP Email Server (FastAPI Version)
-Exposes email template tools to ChatGPT using HTTP and OpenAPI schema
-"""
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 import logging
@@ -12,7 +8,6 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="MCP Email Server", version="1.0.0")
 
-# Request models
 class WelcomeRequest(BaseModel):
     name: str
     company: str
@@ -21,7 +16,7 @@ class ResetRequest(BaseModel):
     name: str
     reset_link: str
 
-@app.post("/getWelcomeEmail")
+@app.post("/get_welcome_email")
 def get_welcome_email(req: WelcomeRequest):
     """Generate a welcome email."""
     return {
@@ -37,7 +32,7 @@ The {req.company} Team
 """
     }
 
-@app.post("/getPasswordResetEmail")
+@app.post("/get_password_reset_email")
 def get_password_reset_email(req: ResetRequest):
     """Generate a password reset email."""
     return {
