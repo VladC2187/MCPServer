@@ -1,4 +1,3 @@
-
 """MCP Email Server (FastAPI Version)
 Exposes email template tools to ChatGPT using HTTP and OpenAPI schema
 """
@@ -22,7 +21,7 @@ class ResetRequest(BaseModel):
     name: str
     reset_link: str
 
-@app.post("/get_welcome_email")
+@app.post("/getWelcomeEmail")
 def get_welcome_email(req: WelcomeRequest):
     """Generate a welcome email."""
     return {
@@ -38,7 +37,7 @@ The {req.company} Team
 """
     }
 
-@app.post("/get_password_reset_email")
+@app.post("/getPasswordResetEmail")
 def get_password_reset_email(req: ResetRequest):
     """Generate a password reset email."""
     return {
